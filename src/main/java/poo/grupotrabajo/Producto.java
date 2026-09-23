@@ -34,4 +34,8 @@ public class Producto {
             System.out.println("El producto está agotado.");
         }
     }
+
+    public void aumentarStock(int cantidad) {
+        stock = stock + cantidad;
+    }
 }
