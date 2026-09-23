@@ -1,38 +1,86 @@
 package poo.grupotrabajo;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Main {
 
     //primer producto
     public static void main(String[] args) {
-        // Primer producto
-        Producto producto1 = new Producto("Caramel Macchiato", 16.5, 0);
 
-        System.out.println("Nombre: " + producto1.nombre);
-        System.out.println("Precio: " + producto1.precio);
-        System.out.println("Stock: " + producto1.stock);
+        // Creamos el menu persistente y sus elementos
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Producto> inventario = new ArrayList<>(); // Nuestro almacen virtual
+        Producto nuevoProducto;
+        int opcionUsuario;
 
-        // Comprobar si tiene stock
-        producto1.obtenerEstadoStock();
+        boolean condicion = true;
+        do{
+            System.out.println("""
+                    BIENVENIDO, SELECCIONE UNA OPCION PARA CONTINUAR
+                    --------------------------------------
+                    1) REGISTRAR PRODUCTO
+                    2) MOSTRAR INFORMACION DEL ULTIMO PRODUCTO AGREGADO
+                    3) VER STOCK DEL PRODUCTO
+                    4) AUMENTAR STOCK DEL PRODUCTO
+                    5) DISMINUIR STOCK DE UN PRODUCTO
+                    6) CALCULAR DESCUENTO DE UN PRODUCTO
+                    7) SALIR
+                    """);
+            opcionUsuario = sc.nextInt();
+            sc.nextLine();
 
-        // Aumentar stock
-        producto1.aumentarStock(10);
-        System.out.println("Stock después de aumentar: " + producto1.stock);
+            switch (opcionUsuario){
+                case 1 -> {
+                    // Registramos el producto aqui|
+                    System.out.println("Ingrese el nombre del producto: ");
+                    String nombreProducto = sc.nextLine();
 
-        System.out.println("----------------------------------");
+                    System.out.println("Ingrese el precio del producto");
+                    double precioProducto = sc.nextDouble();
+                    sc.nextLine();
 
-        // Segundo producto
-        Producto producto2 = new Producto("Cheesecake de fresa", 18, 30);
+                    System.out.println("Ingrese el stock inicial del producto: ");
+                    int stockProducto = sc.nextInt();
+                    sc.nextLine();
 
-        // Mostrar información
-        producto2.mostrarInformacion();
+                    // Creamos el producto nuevo
+                    nuevoProducto = new Producto(nombreProducto, precioProducto, stockProducto);
 
-        // Disminuir stock
-        producto2.disminuirStock(5);
-        System.out.println("Stock después de disminuir: " + producto2.stock);
+                    // Almacenamos el producto
+                    inventario.add(nuevoProducto);
+                }
+                case 2 -> {
+                    // Mostramos el producto aqui
+                    Producto p = inventario.getLast();
+                    p.mostrarInformacion();
+                }
+                case 3 -> {
+                    // Podemos ver estado del stock aqui
+                    Producto p = inventario.getLast();
+                    int stockActual = p.stock;
 
-        // Calcular descuento
-        double precioFinal = Producto.calcularDescuento(producto2.precio, 10);
-        System.out.println("Precio final: " + precioFinal);
+                    System.out.printf("Se tienen %d unidades%n", stockActual);
+                    p.obtenerEstadoStock();
+                }
+                case 4 -> {
+                    // Aumentamos stock aqui
+                }
+                case 5 -> {
+                    // Disminuimos stock aqui
+                }
+                case 6 -> {
+                    // Calculamos descuentos aqui
+                }
+                case 7 -> {
+                    // Con esta opcion cerramos le bucle
+                System.out.println("Gracias por usar nuestros servicios!");
+                    condicion = false;
+                }
+            }
+
+        }while(condicion);
+
     }
 
 }
