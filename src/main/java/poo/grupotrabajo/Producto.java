@@ -17,5 +17,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    //
+    // Métodos
+
+    // Mostrar Información
+    public void mostrarInformacion() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Precio: " + precio);
+        System.out.println("Stock: " + stock);
+    }
 }
