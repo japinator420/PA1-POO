@@ -38,4 +38,8 @@ public class Producto {
     public void aumentarStock(int cantidad) {
         stock = stock + cantidad;
     }
+
+    public void disminuirStock(int cantidad) {
+        stock = stock - cantidad;
+    }
 }
