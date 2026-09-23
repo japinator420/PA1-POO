@@ -34,4 +34,18 @@ public class Producto {
             System.out.println("El producto está agotado.");
         }
     }
+    // Permite aumentar la cantidad disponible del producto cuando
+    // se recibe nueva mercancía o se realiza una reposición de stock.
+    public void aumentarStock(int cantidad) {
+        stock = stock + cantidad;
+    }
+    // Permite disminuir la cantidad disponible del producto después
+    // de una venta o salida de inventario.
+    public void disminuirStock(int cantidad) {
+        stock = stock - cantidad;
+    }
+    // Calcula el precio final del producto aplicando un descuento según el porcentaje indicado.
+    public static double calcularDescuento(double monto, double porcentaje) {
+        return monto - (monto * porcentaje / 100);
+    }
 }
