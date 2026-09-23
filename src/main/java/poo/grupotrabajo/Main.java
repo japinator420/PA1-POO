@@ -20,12 +20,13 @@ public class Main {
                     BIENVENIDO, SELECCIONE UNA OPCION PARA CONTINUAR
                     --------------------------------------
                     1) REGISTRAR PRODUCTO
-                    2) MOSTRAR INFORMACION DEL ULTIMO PRODUCTO AGREGADO
+                    2) MOSTRAR INFORMACION DE UN PRODUCTO
                     3) VER STOCK DEL PRODUCTO
                     4) AUMENTAR STOCK DEL PRODUCTO
                     5) DISMINUIR STOCK DE UN PRODUCTO
                     6) CALCULAR DESCUENTO DE UN PRODUCTO
-                    7) SALIR
+                    7) VER LISTA DE PRODUCTOS
+                    8) SALIR
                     """);
             opcionUsuario = sc.nextInt();
             sc.nextLine();
@@ -52,28 +53,80 @@ public class Main {
                 }
                 case 2 -> {
                     // Mostramos el producto aqui
-                    Producto p = inventario.getLast();
-                    p.mostrarInformacion();
+                    if(inventario.isEmpty()){
+                        System.out.println("Aun no se han agregado productos");
+                    }else{
+                        System.out.println("Ingrese el numero del producto (consulte la lista con la opcion 7)");
+                        int indiceProducto = sc.nextInt();
+                        sc.nextLine();
+
+                        Producto p = inventario.get(indiceProducto-1);
+                        p.mostrarInformacion();
+                    }
                 }
                 case 3 -> {
                     // Podemos ver estado del stock aqui
-                    Producto p = inventario.getLast();
-                    int stockActual = p.stock;
+                    if(inventario.isEmpty()){
+                        System.out.println("Aun no se han agregado productos");
+                    }else{
+                        System.out.println("Ingrese el numero del producto (consulte la lista con la opcion 7)");
+                        int indiceProducto = sc.nextInt();
+                        sc.nextLine();
 
-                    System.out.printf("Se tienen %d unidades%n", stockActual);
-                    p.obtenerEstadoStock();
+                        Producto p = inventario.get(indiceProducto-1);
+                        int stockActual = p.stock;
+
+                        System.out.printf("Se tienen %d unidades%n", stockActual);
+                        p.obtenerEstadoStock();
+                    }
                 }
                 case 4 -> {
-                    // Aumentamos stock aqui
+                    System.out.println("Ingrese el numero del producto (consulte la lista con la opcion 7)");
+                    int indiceProducto = sc.nextInt();
+                    sc.nextLine();
+
+                    Producto p = inventario.get(indiceProducto-1);
+                    System.out.println("Ingrese en cuanto desea aumentar el stock del producto: ");
+                    int stockAdicional = sc.nextInt();
+                    sc.nextLine();
+
+                    p.aumentarStock(stockAdicional);
                 }
                 case 5 -> {
                     // Disminuimos stock aqui
+                    System.out.println("Ingrese el numero del producto (consulte la lista con la opcion 7)");
+                    int indiceProducto = sc.nextInt();
+                    sc.nextLine();
+
+                    Producto p = inventario.get(indiceProducto-1);
+                    System.out.println("Ingrese en cuanto desea disminuir el stock del producto: ");
+                    int stockRemovido = sc.nextInt();
+                    sc.nextLine();
+
+                    p.aumentarStock(stockRemovido);
                 }
                 case 6 -> {
                     // Calculamos descuentos aqui
+                    Producto p = inventario.getLast();
+                    System.out.println("Ingrese el monto incial: ");
+                    double montoInicial = sc.nextDouble();
+                    System.out.println("Ingrese el descuento a calcular (Ejemplo: 10.5 = 10.5%)");
+                    double descuentoAplicado = sc.nextDouble();
+
+                    double montoFinal = Producto.calcularDescuento(montoInicial, descuentoAplicado);
+
+                    System.out.printf("El monto resultante luego del descuento será: %.2f", montoFinal);
                 }
                 case 7 -> {
-                    // Con esta opcion cerramos le bucle
+                    System.out.println(inventario.size());
+                    for(int i=0; i<inventario.size(); i++){
+                        System.out.println(i+1 + ")");
+                        inventario.get(i).mostrarInformacion();
+                        System.out.println("---------------");
+                    }
+                }
+                case 8 -> {
+                    // Con esta opcion cerramos el bucle
                 System.out.println("Gracias por usar nuestros servicios!");
                     condicion = false;
                 }
