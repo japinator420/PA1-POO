@@ -34,4 +34,16 @@ public class Producto {
             System.out.println("El producto está agotado.");
         }
     }
+
+    public void aumentarStock(int cantidad) {
+        stock = stock + cantidad;
+    }
+
+    public void disminuirStock(int cantidad) {
+        stock = stock - cantidad;
+    }
+
+    public static double calcularDescuento(double monto, double porcentaje) {
+        return monto - (monto * porcentaje / 100);
+    }
 }
