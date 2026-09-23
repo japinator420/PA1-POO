@@ -42,4 +42,8 @@ public class Producto {
     public void disminuirStock(int cantidad) {
         stock = stock - cantidad;
     }
+
+    public static double calcularDescuento(double monto, double porcentaje) {
+        return monto - (monto * porcentaje / 100);
+    }
 }
