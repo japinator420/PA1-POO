@@ -17,11 +17,11 @@ Entre las principales funciones se encuentran:
 
 ## Integrantes
 
-* Ariana Tiparra Reyes
-* Amir Alvarez Alvarez
-* Andreu Antonio Rangel
-* Diana Cueva Cerna
-* Fátima Gallardo Ramírez
+* Ariana Tiparra Reyes (ArianaTiparra)
+* Amir Alvarez Alvarez (japinator420)
+* Andreu Antonio Rangel 
+* Diana Cueva Cerna (diapia)
+* Fátima Gallardo Ramírez (FatimaGR)
 
 ## Tecnologías utilizadas
 
