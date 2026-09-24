@@ -103,7 +103,7 @@ public class Main {
                     int stockRemovido = sc.nextInt();
                     sc.nextLine();
 
-                    p.aumentarStock(stockRemovido);
+                    p.disminuirStock(stockRemovido);
                 }
                 case 6 -> {
                     // Calculamos descuentos aqui
@@ -118,7 +118,7 @@ public class Main {
                     System.out.printf("El monto resultante luego del descuento será: %.2f", montoFinal);
                 }
                 case 7 -> {
-                    System.out.println(inventario.size());
+                    // Mostramos la lista de productos y asignamos un numero de orden
                     for(int i=0; i<inventario.size(); i++){
                         System.out.println(i+1 + ")");
                         inventario.get(i).mostrarInformacion();
@@ -127,7 +127,7 @@ public class Main {
                 }
                 case 8 -> {
                     // Con esta opcion cerramos el bucle
-                System.out.println("Gracias por usar nuestros servicios!");
+                    System.out.println("Gracias por usar nuestros servicios!");
                     condicion = false;
                 }
             }
